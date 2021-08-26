@@ -1,0 +1,22 @@
+@startuml blogging-container
+!includeurl C:\Users\Jigyans\SpringProjects\rest-service\src\main\c4Models\C4_Container.puml
+
+Person(user, "User")
+Person_Ext(extUser, "External User")
+System_Ext(extSystem, "External System")
+
+System_Boundary(testSystem, "Test System"){
+    Container(container1, "Service 1", "type")
+    Container(container2, "Service 2", "type")
+    Rel(user, container1, "Request")
+    Rel(container1, container2, "Request")
+
+    ContainerDb(db, "DB","MySQL")
+    Rel(container2, db,"operation","jdbc")
+
+    ContainerDb(eventBus, "EventBus","Kafka")
+    Rel(container2, eventBus,"EventBus")
+}
+
+Rel(extUser, extSystem, "Request")
+@enduml

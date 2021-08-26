@@ -1,0 +1,12 @@
+@startuml blogging-container
+!includeurl C:\Users\Jigyans\SpringProjects\rest-service\src\main\c4Models\C4_Component.puml
+
+Container(testContainer, "Container", "type")
+
+Container_Boundary(testSystem, "Test Service") {
+    Component(testComponent,"Test Component","type")
+    Rel(testContainer, testComponent,"Request")
+
+}
+
+@enduml

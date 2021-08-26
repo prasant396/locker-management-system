@@ -1,0 +1,17 @@
+@startuml system-context
+title System Context
+!includeurl C:\Users\Jigyans\SpringProjects\rest-service\src\main\c4Models\C4_Context.puml
+
+Person(user, "User")
+System(testSystem, "Test System")
+
+Rel(user,testSystem,"Create Post")
+Rel(user,testSystem,"Update Post","https")
+
+Person_Ext(extUser, "External User")
+Rel(extUser, testSystem, "Read Post", "https")
+Rel(extUser, testSystem, "Search Posts", "https")
+
+Rel(testSystem, extUser, "Notify New Post", "emails")
+
+@enduml
